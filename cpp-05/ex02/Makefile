@@ -1,0 +1,43 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rthomas <rthomas@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/22 16:24:26 by romainthoma       #+#    #+#              #
+#    Updated: 2023/01/20 15:29:21 by rthomas          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = Bureaucrat
+
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g -fsanitize=address
+
+SOURCES =	sources/main.cpp \
+			sources/Bureaucrat.cpp \
+			sources/Form.cpp \
+			sources/ShrubberyCreationForm.cpp \
+			sources/RobotomyRequestForm.cpp \
+			sources/PresidentialPardonForm.cpp 
+
+
+OBJS = $(SOURCES:.cpp=.o)
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			clang++ $(CFLAGS) $(OBJS) -o $(NAME)
+
+clean:
+			rm -f $(OBJS)
+
+fclean:		clean
+			rm -f $(NAME)
+
+norme:
+			norminette $(SRCS)
+
+re:			fclean all
+
+.PHONY:		re clean fclean all
