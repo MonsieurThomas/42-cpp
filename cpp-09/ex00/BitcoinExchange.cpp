@@ -6,7 +6,7 @@
 /*   By: romainthomas <romainthomas@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:05:12 by romainthoma       #+#    #+#             */
-/*   Updated: 2023/06/04 18:43:02 by romainthoma      ###   ########.fr       */
+/*   Updated: 2023/07/12 17:53:11 by romainthoma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ bool BitcoinExchange::isLastDate(std::string data_date, std::string input_date)
 	int	input_annee = std::stoi(input_date.substr(0).c_str());
 	int	input_mois = std::stoi(input_date.substr(5).c_str());
 	int	input_jour = std::stoi(input_date.substr(8).c_str());
-
-	// std::cout << "This is data_annee = " << data_annee << std::endl;
-	// std::cout << "This is data_mois = " << data_mois << std::endl;
-	// std::cout << "This is data_jour = " << data_jour << std::endl << std::endl;
 
 	if (data_jour > this->lastJour && data_jour > input_jour && this->annee && this->mois)
 		return true;

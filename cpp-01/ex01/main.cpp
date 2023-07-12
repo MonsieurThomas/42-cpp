@@ -3,51 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rthomas <rthomas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: romainthomas <romainthomas@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:12:33 by romainthoma       #+#    #+#             */
-/*   Updated: 2023/01/13 15:39:53 by rthomas          ###   ########.fr       */
+/*   Updated: 2023/03/13 17:48:46 by romainthoma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+// #include "zombieHorde.cpp"
 
 int main()
 {
-    std::string inputName;
-    std::string inputNumber;
-    int number;
-    int error;
+    int number = 0;
+    std::string input;
+    std::cout << "How may zombies do you want ?"<< std::endl;
 
-    
-    std::cout << "How many zombies are in the horde ?" << std::endl;
-    while(42)
+    while (!number)
     {
-        error = 0;
-        std::cout << "- ";
-        if(!getline(std::cin, inputNumber))
+        if (!std::getline(std::cin, input))
             break;
-        for(long i = 0; i < inputNumber.length(); i++)
-            if (!std::isdigit(inputNumber[i]))
-                error ++;
-        if (number < 0)
-            error++;
-        if (error > 0)
-            std::cout << "You can only give positive number" << std::endl;
-        else 
-           break;
+        number = std::stoi(input);
     }
-    if (inputNumber.empty())
+    std::cout << "you choosed to create a horde of " << number << std::endl;
+    std::cout <<"what is the name of your horde ?" << std::endl;
+    if (!std::getline(std::cin, input))
         return 0;
-    number = std::stoi(inputNumber);
-    std::cout << "You choosed to create an Horde of " << number << " zombies." << std::endl;
-    std::cout << "What is the name of the zombies of the horde ?" << std::endl;
-    std::cout << "- ";
-    getline(std::cin, inputName);
-    if (inputName.empty())
-        return 0;
-    Zombie *horde = zombieHorde(number, inputName);
-    std::cout << "this is announce of horde[0]" << std::endl;
-    horde[0].announce();
+    
+    Zombie *horde = zombieHorde(number, input);
+    
     delete [] horde;
 }

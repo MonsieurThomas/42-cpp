@@ -68,8 +68,6 @@ int main(int ac, char **av)
 			{
 				for (std::vector<Data>::const_iterator it = dataVector.begin(); it != dataVector.end(); ++it)
 				{
-					// std::cout << "THis is date input = " << date_input << std::endl;
-					// std::cout << "THis is it->date_data = " << it->date_data << std::endl << std::endl;
 					if (a.isLastDate(it->date_data, date_input))
 					{
 						if (it->date_data == date_input)
